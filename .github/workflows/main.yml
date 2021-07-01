@@ -29,6 +29,12 @@ jobs:
         run: |
           echo "DOCKER_SERVICE=kvalitetsit/iheos-toolkit2" >> $GITHUB_ENV
 
+      - name: Login to docker
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
       # if below step is skipped this build is a tag build. Can be used for skipping other steps.
       - name: Is Tag Build
         id: tag
